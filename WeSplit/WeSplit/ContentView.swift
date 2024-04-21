@@ -59,6 +59,7 @@ struct ContentView: View {
                 
                 Section ("Total Check") {
                     Text(totalPerPerson * Double(numberOfPeople + 2), format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundStyle(tipPercentage == 0 ? .red : Color.primary)
                 }
                 
                 Section ("Amount per person") {
