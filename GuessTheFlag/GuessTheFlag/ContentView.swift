@@ -14,6 +14,12 @@ struct ContentView: View {
     @State private var round = 0
     @State private var showingGameOver = false
     
+    @State private var flagSpinAmt = [0.0, 0.0, 0.0]
+    @State private var flagOpacities = [1.0,1.0,1.0]
+    @State private var flagScale = [1.0, 1.0, 1.0]
+    
+    @State private var flagNum = -1
+    
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     
@@ -51,10 +57,24 @@ struct ContentView: View {
                     }
                     ForEach(0..<3){ number in
                         Button {
+                            flagNum = number
+                            withAnimation{
+                                flagSpinAmt[number] += 360
+                                
+                                flagOpacities[(number+1)%3] = 0.25
+                                flagOpacities[(number+2)%3] = 0.25
+                                
+                                flagScale[(number+1)%3] = 0.5
+                                flagScale[(number+2)%3] = 0.5
+                            }
                             flagTapped(number)
                         } label: {
                             FlagImage(flag: countries[number])
                         }
+                        .rotation3DEffect(.degrees(flagSpinAmt[number]), axis: (x:0, y:1, z:0))
+                        .opacity(flagOpacities[number])
+                        .scaleEffect(flagScale[number])
+                        
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -70,6 +90,7 @@ struct ContentView: View {
                 Spacer()
             }
             .padding()
+            
             .alert(scoreTitle, isPresented: $showingScore) {
                 Button("Continue", action: askQuestion)
             } message: {
@@ -92,7 +113,8 @@ struct ContentView: View {
             scoreTitle = "Wrong! That's the flag of \(countries[number])!"
         }
         
-        showingScore = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                showingScore = true}
         round += 1
         if (round == 8) {
             showingGameOver = true
@@ -102,6 +124,9 @@ struct ContentView: View {
     func askQuestion() {
         if round < 8 {
             countries.shuffle()
+            flagOpacities = [1.0, 1.0, 1.0]
+            flagScale = [1.0, 1.0, 1.0]
+            flagNum = -1
             correctAnswer = Int.random(in: 0...2)
         }
     }
@@ -109,6 +134,8 @@ struct ContentView: View {
     func resetGame() {
         round = 0
         score = 0
+        flagOpacities = [1.0, 1.0, 1.0]
+        flagScale = [1.0, 1.0, 1.0]
         showingGameOver = false
         askQuestion()
     }
