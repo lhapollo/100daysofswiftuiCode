@@ -137,6 +137,7 @@ struct ContentView: View {
         flagOpacities = [1.0, 1.0, 1.0]
         flagScale = [1.0, 1.0, 1.0]
         showingGameOver = false
+        showingScore = false
         askQuestion()
     }
     
