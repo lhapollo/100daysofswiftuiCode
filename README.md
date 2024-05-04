@@ -13,3 +13,5 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 5. **BetterRest**: An app that uses machine learning to predict the optimal time for somebody to sleep is, given their desired amount of sleep, their coffee intake, and what time they want to wake up. 
 
 6. **WordScramble**: A game that gives the user a word and they have to make as many valid words out of the given word (valid means a real word more than 3 letters that is not the original given word). 
+
+7. **iExpense**: A simple expense tracker that keeps track of a person's expense -- if it was personal or business, who the expense belongs to, and the value of the cost.
