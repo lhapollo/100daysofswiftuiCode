@@ -14,6 +14,20 @@ struct ExpenseItem: Identifiable, Codable{
     let amount: Double
 }
 
+struct BusinessExpense: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.blue)
+    }
+}
+
+struct PersonalExpense: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.green)
+    }
+}
+
 @Observable
 class Expenses {
     var items = [ExpenseItem]() {
@@ -34,6 +48,8 @@ class Expenses {
     }
 }
 
+
+
 struct ContentView: View {
     @State private var expenses = Expenses()
     
@@ -43,15 +59,38 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
+                    if (item.type == "Personal") {
+                        HStack {
+                            VStack(alignment: .leading){
+                                if (item.type == "Personal") {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                        .personalModifier()
+                                }
+                            }
+                            Spacer()
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         }
-                        
-                        Spacer()
-                        Text(item.amount, format: .currency(code: "USD"))
+                    }
+                }
+                .onDelete(perform: removeItems)
+                
+                ForEach(expenses.items) { item in
+                    if (item.type == "Business") {
+                        HStack {
+                            VStack(alignment: .leading){
+                                if (item.type == "Business") {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                        .businessModifier()
+                                }
+                            }
+                            
+                            Spacer()
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        }
                     }
                 }
                 .onDelete(perform: removeItems)
@@ -70,6 +109,15 @@ struct ContentView: View {
     
     func removeItems(at offsets: IndexSet){
         expenses.items.remove(atOffsets: offsets)
+    }
+}
+
+extension View {
+    func personalModifier() -> some View {
+        modifier(PersonalExpense())
+    }
+    func businessModifier() -> some View {
+        modifier(BusinessExpense())
     }
 }
 
