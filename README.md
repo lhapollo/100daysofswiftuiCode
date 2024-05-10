@@ -17,3 +17,9 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 7. **iExpense**: A simple expense tracker that keeps track of a person's expense -- if it was personal or business, who the expense belongs to, and the value of the cost.
 
 8. **Moonshot**: An app that tells you about the various APOLLO missions.
+
+## To do: 
+
+- Finish RPSBrainTrain UI
+- Finish TimeTable Project
+- Fix Moonshot: convert VStack usage in ListLayout to List
