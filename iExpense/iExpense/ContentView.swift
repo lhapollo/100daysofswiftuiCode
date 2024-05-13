@@ -96,15 +96,20 @@ struct ContentView: View {
                 .onDelete(perform: removeItems)
             }
             .toolbar {
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
+//                Button("Add Expense", systemImage: "plus") {
+//                    showingAddExpense = true
+//                }
+                NavigationStack {
+                    NavigationLink("Add Expense") {
+                        AddView(expenses: expenses)
+                    }
                 }
             }
             .navigationTitle("iExpense")
         }
-        .sheet(isPresented: $showingAddExpense) {
-            AddView(expenses: expenses)
-        }
+//        .sheet(isPresented: $showingAddExpense) {
+//            AddView(expenses: expenses)
+//        }
     }
     
     func removeItems(at offsets: IndexSet){
