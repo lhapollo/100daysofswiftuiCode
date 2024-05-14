@@ -18,8 +18,11 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 8. **Moonshot**: An app that tells you about the various APOLLO missions.
 
+9. **TrackIt**: A habit tracking app that keeps tracks of activities
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
 - Finish TimeTable Project
 - Fix Moonshot: convert VStack usage in ListLayout to List
+- Finish TrackIt ** 
