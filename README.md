@@ -20,6 +20,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 9. **TrackIt**: A habit tracking app that keeps tracks of activities
 
+10. **CupcakeCorner**: An app that takes orders of cupcakes and sends this data over the internet and returns it.
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
