@@ -22,6 +22,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 10. **CupcakeCorner**: An app that takes orders of cupcakes and sends this data over the internet and returns it.
 
+11. **Bookworm**: An app that tracks books you've read, and stores details such as info about the book and user reviews.
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
