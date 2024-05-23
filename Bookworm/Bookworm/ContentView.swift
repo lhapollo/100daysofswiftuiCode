@@ -29,8 +29,14 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title)
                                     .font(.headline)
-                                Text(book.author)
-                                    .foregroundStyle(.secondary)
+                                    .foregroundColor(book.rating == 1 ? .red : .primary)
+                                
+                                HStack {
+                                    Text(book.author)
+                                        .foregroundStyle(.secondary)
+                                    Spacer()
+                                    Text(book.date.formatted(date: .numeric, time: .omitted))
+                                }
                             }
                         }
                     }
