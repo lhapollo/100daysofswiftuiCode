@@ -29,4 +29,5 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 - Finish RPSBrainTrain UI
 - Finish TimeTable Project
 - Fix Moonshot: convert VStack usage in ListLayout to List
-- Finish TrackIt ** 
+- Finish TrackIt **
+- Complete Day 59 challenges
