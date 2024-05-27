@@ -24,6 +24,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 11. **Bookworm**: An app that tracks books you've read, and stores details such as info about the book and user reviews.
 
+12. **JSONProject**: An app that takes info from a JSON file and displays it. 
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
@@ -31,3 +33,4 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 - Fix Moonshot: convert VStack usage in ListLayout to List
 - Finish TrackIt **
 - Complete Day 59 challenges
+- Improve JSONProject UI
