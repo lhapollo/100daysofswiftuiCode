@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var users = [User]()
+    @Environment(\.modelContext) private var modelContext
+    @Query var users: [User]
+    @State private var isDataLoaded = UserDefaults.standard.bool(forKey: "isDataLoaded")
     
     var body: some View {
         NavigationView {
@@ -24,8 +27,9 @@ struct ContentView: View {
             }
             .navigationTitle("FriendFace")
             .task {
-                if (users.isEmpty) {
+                if (!isDataLoaded) {
                     await loadData()
+                    UserDefaults.standard.set(true, forKey: "isDataLoaded")
                 }
             }
         }
@@ -43,11 +47,23 @@ struct ContentView: View {
             decoder.dateDecodingStrategy = .iso8601
             
             let decodedUsers = try decoder.decode([User].self, from: data)
-            DispatchQueue.main.async {
-                users = decodedUsers
+            if (users.isEmpty) {
+                await saveToSwiftData(users: decodedUsers)
             }
         } catch {
             print("Invalid data: \(error.localizedDescription)")
+        }
+    }
+    
+    func saveToSwiftData(users: [User]) async {
+        for user in users {
+            
+            modelContext.insert(user)
+        }
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save users: \(error.localizedDescription)")
         }
     }
 }
