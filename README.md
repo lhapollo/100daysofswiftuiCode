@@ -24,7 +24,9 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 11. **Bookworm**: An app that tracks books you've read, and stores details such as info about the book and user reviews.
 
-12. **JSONProject**: An app that takes info from a JSON file and displays it. 
+12. **JSONProject**: An app that takes info from a JSON file and displays it.
+
+13. **InstaFilter:** An app that takes a photo and applies filters to it. 
 
 ## To do: 
 
