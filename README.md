@@ -26,7 +26,9 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 12. **JSONProject**: An app that takes info from a JSON file and displays it.
 
-13. **InstaFilter:** An app that takes a photo and applies filters to it. 
+13. **InstaFilter:** An app that takes a photo and applies filters to it.
+
+14. **BucketList:** An app that lets users add locations on a map, and finds spots nearby that point for them to visit.
 
 ## To do: 
 
