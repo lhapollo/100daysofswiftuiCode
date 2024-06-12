@@ -29,13 +29,14 @@ struct ContentView: View {
                     Text("\(score.formatted())")
                 }
                 
-                Section ("Words used"){
+                Section {
                     ForEach(usedWords, id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
                             Text(word)
                         }
-                        
+                        .accessibilityElement()
+                        .accessibilityLabel("\(word), \(word.count) letters")
                     }
                 }
             }
