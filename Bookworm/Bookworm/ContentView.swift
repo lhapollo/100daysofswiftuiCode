@@ -1,77 +1,65 @@
 //
-//  ContentView.swift
+//  RatingView.swift
 //  Bookworm
 //
-//  Created by Lexi Han on 2024-05-20.
+//  Created by Lexi Han on 2024-05-21.
 //
 
 import SwiftUI
-import SwiftData
 
-struct ContentView: View {
-    @Environment(\.modelContext) var modelContext
-    @Query(sort: [
-        SortDescriptor(\Book.title),
-        SortDescriptor(\Book.author)
-    ]) var books: [Book]
+struct RatingView: View {
+    @Binding var rating: Int
     
-    @State private var showingAddScreen = false
+    var label = ""
+    
+    var maximumRating = 5
+    
+    var offImage: Image?
+    var onImage = Image(systemName: "star.fill")
+    
+    var offColor = Color.gray
+    var onColor = Color.yellow
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(books) { book in
-                    NavigationLink(value: book) {
-                        HStack {
-                            EmojiRatingView(rating: book.rating)
-                                .font(.largeTitle)
-                            
-                            VStack(alignment: .leading) {
-                                Text(book.title)
-                                    .font(.headline)
-                                    .foregroundColor(book.rating == 1 ? .red : .primary)
-                                
-                                HStack {
-                                    Text(book.author)
-                                        .foregroundStyle(.secondary)
-                                    Spacer()
-                                    Text(book.date.formatted(date: .numeric, time: .omitted))
-                                }
-                            }
-                        }
-                    }
-                    .navigationDestination(for: Book.self) {book in
-                        DetailView(book: book)
-                    }
-                }
-                .onDelete(perform: deleteBooks)
+        HStack {
+            if label.isEmpty == false {
+                Text(label)
             }
-                .navigationTitle("Bookworm")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Add Book", systemImage: "plus") {
-                            showingAddScreen.toggle()
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .topBarLeading) {
-                        EditButton()
-                    }
+            
+            ForEach(1..<maximumRating + 1, id: \.self) { number in
+                Button {
+                    rating = number
+                } label: {
+                    image(for: number)
+                        .foregroundStyle(number > rating ? offColor : onColor)
                 }
-                .sheet(isPresented: $showingAddScreen) {
-                    AddBookView()
+            }
+            .buttonStyle(.plain)
+            .accessibilityElement()
+            .accessibilityLabel(label)
+            .accessibilityValue(rating == 1 ? "1 star" : "\(rating) stars")
+            .accessibilityAdjustableAction { direction in
+                switch direction {
+                case .increment:
+                    if rating < maximumRating { rating += 1 }
+                case .decrement:
+                    if rating > 1 { rating -= 1 }
+                default:
+                    break
                 }
+            }
         }
     }
     
-    func deleteBooks(at offsets: IndexSet) {
-        for offset in offsets {
-            let book = books[offset]
-            modelContext.delete(book)
+    func image(for number: Int) -> Image {
+        if number > rating {
+            offImage ?? onImage
+        } else {
+            onImage
         }
     }
 }
 
 #Preview {
-    ContentView()
+    RatingView(rating: .constant(4))
 }
