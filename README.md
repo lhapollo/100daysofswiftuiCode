@@ -39,4 +39,4 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 - Complete Day 59 challenges (iExpense)
 - Complete Day 76 challenges (iExpense)
 - Improve JSONProject UI
-- Day 77 Challenge
+- Day 77-78 Challenge
