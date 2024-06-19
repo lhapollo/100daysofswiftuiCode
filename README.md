@@ -30,6 +30,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 14. **BucketList:** An app that lets users add locations on a map, and finds spots nearby that point for them to visit.
 
+15. **HotProspects:** An app that lets you track people you've met at a conference or gathering and whether or not you've made contact with them.
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
