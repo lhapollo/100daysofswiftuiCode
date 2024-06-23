@@ -32,6 +32,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 15. **HotProspects:** An app that lets you track people you've met at a conference or gathering and whether or not you've made contact with them.
 
+16. **Flashzilla:** An app that simulates using flashcards, including being able to add/remove cards from a pile, and reviewing cards the user got incorrect.
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
