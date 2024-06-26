@@ -34,6 +34,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 16. **Flashzilla:** An app that simulates using flashcards, including being able to add/remove cards from a pile, and reviewing cards the user got incorrect.
 
+17. **DiceRollers:** An app that simulates basic dice rolling. UI could be improved.
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
