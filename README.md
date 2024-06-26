@@ -36,6 +36,8 @@ Link to tutorial: [here](https://www.hackingwithswift.com/100/swiftui)
 
 17. **DiceRollers:** An app that simulates basic dice rolling. UI could be improved.
 
+18. **SnowSeekers:** An app that shows various ski resorts and their information for users to view and save.
+
 ## To do: 
 
 - Finish RPSBrainTrain UI
